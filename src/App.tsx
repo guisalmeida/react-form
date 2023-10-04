@@ -1,7 +1,18 @@
-import React from "react"
+
+import { useState } from 'react'
+
+type FormData = {
+    firstName: string, 
+    lastName: string, 
+    email: string, 
+    comments: string, 
+    isFriendly: boolean,
+    employment: string,
+    favColor: string
+}
 
 export default function App() {
-    const [formData, setFormData] = React.useState(
+    const [formData, setFormData] = useState<FormData>(
         {
             firstName: "", 
             lastName: "", 
@@ -13,7 +24,7 @@ export default function App() {
         }
     )
     
-    function handleChange(event) {
+    function handleChange(event): void {
         const {name, value, type, checked} = event.target
         setFormData(prevFormData => {
             return {
@@ -23,7 +34,7 @@ export default function App() {
         })
     }
     
-    function handleSubmit(event) {
+    function handleSubmit(event): void {
         event.preventDefault()
         // submitToApi(formData)
         console.log(formData)
